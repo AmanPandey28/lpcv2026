@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "model": {
+    "name": "MobileCLIP2-S2",
+    "pytorch_image_normalization": "identity"
+  },
+  "dataset": {
+    "name": "LPCVC 2026 Track 1 official sample set",
+    "num_images": 56,
+    "num_texts": 211,
+    "manifest_sha256": "eb309731a622aafed110c0ee1d864babcad71db5a82069c9fd9c37d1b2a2e09e",
+    "ordering": "img_list.csv row order",
+    "primary_metric": "organizer fractional Recall@K",
+    "integrity": {
+      "dangling_positive_text_ids": [
+        154
+      ],
+      "affected_images": [
+        "66910013_3cf3aef994_b.jpg"
+      ],
+      "fractional_recall_at_10_attainable_ceiling": 0.9982142857142857
+    }
+  },
+  "environment": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:42:22) [GCC 14.3.0]",
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.8.0",
+      "torchvision": "0.23.0",
+      "open-clip-torch": "3.3.0",
+      "onnx": "1.18.0",
+      "onnxruntime": "1.22.1",
+      "transformers": "4.57.6",
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "pillow": "11.3.0"
+    }
+  },
+  "artifacts": {
+    "checkpoint": {
+      "path": "mobileclip2_s2.pt",
+      "sha256": "37c2d839a856491f2fcc82c40dc28672dbd0907235b4cd4c38dfff6457f0c09f"
+    },
+    "float_onnx_image": {
+      "source_path": "image_encoder.onnx",
+      "source_sha256": "f9a32a968468e627dacff1310227d4013a34183876204a83a0893f4fbd96ab4b",
+      "resolved_path": "image_encoder.onnx"
+    },
+    "float_onnx_text": {
+      "source_path": "text_encoder.onnx",
+      "source_sha256": "ef7137bcdbc06a877769be823902fd80df76e41a0cfa7b12fcf45af120080ed3",
+      "resolved_path": "text_encoder.onnx"
+    }
+  },
+  "stages": {
+    "pytorch_image__pytorch_text": {
+      "metrics": {
+        "num_images": 56,
+        "num_texts": 211,
+        "embedding_dim": 512,
+        "fractional_recall_at_1": 0.2594246031746032,
+        "fractional_recall_at_1_bootstrap_95ci": [
+          0.2045126488095238,
+          0.3173611111111111
+        ],
+        "hit_recall_at_1": 0.8035714285714286,
+        "hit_recall_at_1_bootstrap_95ci": [
+          0.6964285714285714,
+          0.8928571428571429
+        ],
+        "fractional_recall_at_5": 0.7515873015873016,
+        "fractional_recall_at_5_bootstrap_95ci": [
+          0.6689422123015872,
+          0.8267361111111111
+        ],
+        "hit_recall_at_5": 0.9642857142857143,
+        "hit_recall_at_5_bootstrap_95ci": [
+          0.9107142857142857,
+          1
+        ],
+        "fractional_recall_at_10": 0.8974702380952381,
+        "fractional_recall_at_10_bootstrap_95ci": [
+          0.8366071428571428,
+          0.9494047619047619
+        ],
+        "hit_recall_at_10": 0.9821428571428571,
+        "hit_recall_at_10_bootstrap_95ci": [
+          0.9464285714285714,
+          1
+        ],
+        "mean_reciprocal_rank": 0.8764583333333332,
+        "median_first_positive_rank": 1
+      },
+      "timing": {
+        "wall_seconds": 10.936421044985764
+      }
+    },
+    "float_onnx_image__pytorch_text": {
+      "metrics": {
+        "num_images": 56,
+        "num_texts": 211,
+        "embedding_dim": 512,
+        "fractional_recall_at_1": 0.2594246031746032,
+        "fractional_recall_at_1_bootstrap_95ci": [
+          0.2045126488095238,
+          0.3173611111111111
+        ],
+        "hit_recall_at_1": 0.8035714285714286,
+        "hit_recall_at_1_bootstrap_95ci": [
+          0.6964285714285714,
+          0.8928571428571429
+        ],
+        "fractional_recall_at_5": 0.7515873015873016,
+        "fractional_recall_at_5_bootstrap_95ci": [
+          0.6689422123015872,
+          0.8267361111111111
+        ],
+        "hit_recall_at_5": 0.9642857142857143,
+        "hit_recall_at_5_bootstrap_95ci": [
+          0.9107142857142857,
+          1
+        ],
+        "fractional_recall_at_10": 0.8974702380952381,
+        "fractional_recall_at_10_bootstrap_95ci": [
+          0.8366071428571428,
+          0.9494047619047619
+        ],
+        "hit_recall_at_10": 0.9821428571428571,
+        "hit_recall_at_10_bootstrap_95ci": [
+          0.9464285714285714,
+          1
+        ],
+        "mean_reciprocal_rank": 0.8764583333333332,
+        "median_first_positive_rank": 1
+      },
+      "image_fidelity_vs_pytorch": {
+        "cosine_mean": 1,
+        "cosine_min": 0.9999998211860657,
+        "cosine_p05": 0.9999998807907104,
+        "rmse": 1.5746045671503673e-7,
+        "max_abs": 0.000002387911081314087,
+        "norm_ratio_mean": 0.9999987483024597
+      },
+      "similarity_matrix_correlation_vs_pytorch": 0.999999999998176,
+      "runtime": {
+        "path": "image_encoder.onnx",
+        "input_name": "image",
+        "input_type": "tensor(float)",
+        "output_names": [
+          "image_embeddings"
+        ],
+        "load_wall_seconds": 0.19250404700869694,
+        "inference_wall_seconds": 2.7846654719905928
+      }
+    },
+    "pytorch_image__float_onnx_text": {
+      "metrics": {
+        "num_images": 56,
+        "num_texts": 211,
+        "embedding_dim": 512,
+        "fractional_recall_at_1": 0.2594246031746032,
+        "fractional_recall_at_1_bootstrap_95ci": [
+          0.2045126488095238,
+          0.3173611111111111
+        ],
+        "hit_recall_at_1": 0.8035714285714286,
+        "hit_recall_at_1_bootstrap_95ci": [
+          0.6964285714285714,
+          0.8928571428571429
+        ],
+        "fractional_recall_at_5": 0.7515873015873016,
+        "fractional_recall_at_5_bootstrap_95ci": [
+          0.6689422123015872,
+          0.8267361111111111
+        ],
+        "hit_recall_at_5": 0.9642857142857143,
+        "hit_recall_at_5_bootstrap_95ci": [
+          0.9107142857142857,
+          1
+        ],
+        "fractional_recall_at_10": 0.8974702380952381,
+        "fractional_recall_at_10_bootstrap_95ci": [
+          0.8366071428571428,
+          0.9494047619047619
+        ],
+        "hit_recall_at_10": 0.9821428571428571,
+        "hit_recall_at_10_bootstrap_95ci": [
+          0.9464285714285714,
+          1
+        ],
+        "mean_reciprocal_rank": 0.8764583333333332,
+        "median_first_positive_rank": 1
+      },
+      "text_fidelity_vs_pytorch": {
+        "cosine_mean": 1,
+        "cosine_min": 0.9999998211860657,
+        "cosine_p05": 0.9999998807907104,
+        "rmse": 3.040896989457423e-7,
+        "max_abs": 0.000003516674041748047,
+        "norm_ratio_mean": 1
+      },
+      "runtime": {
+        "path": "text_encoder.onnx",
+        "input_name": "text",
+        "input_type": "tensor(int64)",
+        "output_names": [
+          "text_embeddings"
+        ],
+        "load_wall_seconds": 0.3202857130090706,
+        "inference_wall_seconds": 5.210665319988038
+      }
+    },
+    "float_onnx_image__float_onnx_text": {
+      "metrics": {
+        "num_images": 56,
+        "num_texts": 211,
+        "embedding_dim": 512,
+        "fractional_recall_at_1": 0.2594246031746032,
+        "fractional_recall_at_1_bootstrap_95ci": [
+          0.2045126488095238,
+          0.3173611111111111
+        ],
+        "hit_recall_at_1": 0.8035714285714286,
+        "hit_recall_at_1_bootstrap_95ci": [
+          0.6964285714285714,
+          0.8928571428571429
+        ],
+        "fractional_recall_at_5": 0.7515873015873016,
+        "fractional_recall_at_5_bootstrap_95ci": [
+          0.6689422123015872,
+          0.8267361111111111
+        ],
+        "hit_recall_at_5": 0.9642857142857143,
+        "hit_recall_at_5_bootstrap_95ci": [
+          0.9107142857142857,
+          1
+        ],
+        "fractional_recall_at_10": 0.8974702380952381,
+        "fractional_recall_at_10_bootstrap_95ci": [
+          0.8366071428571428,
+          0.9494047619047619
+        ],
+        "hit_recall_at_10": 0.9821428571428571,
+        "hit_recall_at_10_bootstrap_95ci": [
+          0.9464285714285714,
+          1
+        ],
+        "mean_reciprocal_rank": 0.8764583333333332,
+        "median_first_positive_rank": 1
+      }
+    }
+  },
+  "float_acceptance": {
+    "status": "accepted",
+    "checks": {
+      "image_cosine": true,
+      "text_cosine": true,
+      "fractional_r10_drop": true
+    }
+  },
+  "public_record_note": "Fresh local check of the public refactor during cleanup; no new device run. Paths reduced to basenames."
+}

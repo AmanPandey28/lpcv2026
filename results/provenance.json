@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "file": "open_submission_fp16.json",
+      "original_report_sha256": "2bb662381d898116954f2cac450f3b9def39d37af87a9c22f399d38bd90a9a42",
+      "source": "Existing project measurement record",
+      "sanitization": "Absolute workspace paths reduced to basenames; note added; numerical results unchanged"
+    },
+    {
+      "file": "local_s2_w8a16.json",
+      "original_report_sha256": "74bf3d848ceb2784ccd72b0911a721a28e50ed48acd409771ff3ad0ef163bc0e",
+      "source": "Existing project measurement record",
+      "sanitization": "Absolute workspace paths reduced to basenames; note added; numerical results unchanged"
+    },
+    {
+      "file": "local_s2_text_float.json",
+      "original_report_sha256": "a71a8ee242a214213fb7af124e40e6881b3ae0553ae2e150c83bf6c8161180b4",
+      "source": "Existing project measurement record",
+      "sanitization": "Absolute workspace paths reduced to basenames; note added; numerical results unchanged"
+    },
+    {
+      "file": "local_s2_wrong_normalization.json",
+      "original_report_sha256": "f107ad82fb97956de828d4aacb83818c6cd12d114dadde6df37a7ea8ed65cf80",
+      "source": "Existing project measurement record",
+      "sanitization": "Absolute workspace paths reduced to basenames; note added; numerical results unchanged"
+    },
+    {
+      "file": "local_s4_reference.json",
+      "original_report_sha256": "2939158126e3a4c550a191dc66b98e8bbff7e9511086d69b4bcfcaac8eaddd62",
+      "source": "Existing project measurement record",
+      "sanitization": "Absolute workspace paths reduced to basenames; note added; numerical results unchanged"
+    },
+    {
+      "file": "w8a16_runtime_lineage.json",
+      "original_report_sha256": "3a227e903e5641e3cee670c927cddd1ac583276f39b6dee4c900aaf80a0d7a66",
+      "source": "Existing project measurement record",
+      "sanitization": "Absolute workspace paths reduced to basenames; note added; numerical results unchanged"
+    },
+    {
+      "file": "refactor_export_smoke.json",
+      "original_report_sha256": "173d624cbc96f97ce39fd497ebda61fd770ff4a79d469c64b3ddcecd9aadfe35",
+      "source": "Fresh local public-refactor check",
+      "sanitization": "Absolute paths reduced to basenames; context note added"
+    },
+    {
+      "file": "refactor_local_validation.json",
+      "original_report_sha256": "d69d9e59de09a96024636705073efde6c36943195f03cff488caed0f257ca99f",
+      "source": "Fresh local public-refactor check",
+      "sanitization": "Absolute paths reduced to basenames; context note added"
+    },
+    {
+      "file": "historical_image_qdq_inspection.json",
+      "original_report_sha256": "5ac7a87e54fa6c34ef54b200927fc129011a582727850dba4276e34063144c36",
+      "source": "Retained historical image QDQ graph",
+      "sanitization": "Absolute paths reduced to basenames; context note added"
+    }
+  ],
+  "limitations": [
+    "No new AI Hub run was performed during repository cleanup.",
+    "These are curated historical records, not independent third-party verification.",
+    "AI Hub job links may require account access.",
+    "The new refactored exporters are validated separately and need not have historical ONNX byte hashes."
+  ]
+}

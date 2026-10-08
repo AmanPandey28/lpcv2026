@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lpcv2026"
+version = "0.1.0"
+description = "MobileCLIP2 export, accuracy validation, and Qualcomm deployment for LPCVC Track 1"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "pandas>=2.2,<3", "Pillow>=10,<12"]
+
+[project.optional-dependencies]
+model = [
+  "torch==2.8.0", "torchvision==0.23.0", "timm==1.0.25",
+  "open-clip-torch==3.3.0", "transformers==4.57.6",
+  "onnx==1.18.0", "onnxruntime==1.22.1",
+]
+hub = ["qai-hub==0.46.0"]
+
+[project.scripts]
+lpcv-export = "lpcv2026.export:main"
+lpcv-evaluate = "lpcv2026.evaluation:main"
+lpcv-deploy = "lpcv2026.deploy:main"
+lpcv-quantize = "lpcv2026.quantize:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "device": "Samsung Galaxy S22 5G",
+  "device_role": "Qualcomm AI Hub Similar Device for XR2 Gen 2; not a literal XR2 Gen 2 measurement",
+  "target_runtime": "qnn_dlc",
+  "image": {
+    "float_onnx_sha256": "22295919a2809e6c89de775b39be3874447a59fe3806049769418493629377ae",
+    "optimize_job_id": "j5qvyjk4g",
+    "quantize_job_id": "jgllxjz8g",
+    "qdq_archive_sha256": "91c4e655e6bf1d2fb116e28c9c0449d6608708aea5e4b156ad00f7096e135e9e",
+    "compile_job_id": "jg9dm6ew5",
+    "compile_status": "SUCCESS",
+    "profile_job_id": "j56w7kl6g",
+    "profile_status": "FAILED",
+    "runtime_debug_profile_job_id": "j5w47o63g",
+    "runtime_debug_profile_status": "FAILED",
+    "failure": "QnnModel_composeGraphsFromDlc: MODEL_GRAPH_ERROR",
+    "local_qdq_fidelity": {
+      "image_cosine_mean_vs_pytorch": 0.810573,
+      "fractional_recall_at_10_with_pytorch_text": 0.885714,
+      "decision": "rejected"
+    }
+  },
+  "text": {
+    "float_onnx_sha256": "162e9010de15c7caeaa83b37c15a2c1a2eb8a2e7ea17fd9cd788fd983e0df293",
+    "optimize_job_id": "jp81xoyk5",
+    "quantize_job_id": "j5qvy8qng",
+    "qdq_archive_sha256": "57447a76fed6ead316047a0d40b313724527b65de14b440efc88a62d6616ba83",
+    "compile_job_id": "jgd23wxr5",
+    "compile_status": "SUCCESS",
+    "profile_job_id": "j5m8mrndp",
+    "profile_status": "FAILED",
+    "failure": "QnnModel_composeGraphsFromDlc: MODEL_GRAPH_ERROR",
+    "local_qdq_fidelity": {
+      "text_cosine_mean_vs_pytorch": 0.999765
+    }
+  },
+  "diagnosis": {
+    "observed_stage": "QNN DLC graph composition during profile/model load, before inference",
+    "ruled_out": [
+      "cross-target QCS8550-to-S22 model lineage",
+      "image-graph-specific topology",
+      "generic inability of the float image/text graphs to run on the S22 target"
+    ],
+    "supported_but_not_proven": "A W8A16 QDQ/QNN DLC compatibility limitation or runtime regression on the current S22/v69 AI Hub path",
+    "not_claimed": "An exact offending operator or definitive compiler defect; the available SDK did not expose downloadable failure logs"
+  },
+  "public_record_note": "Historical measurement; local absolute paths reduced to basenames. Metrics and job identifiers unchanged. Model binaries and raw embeddings are not included."
+}

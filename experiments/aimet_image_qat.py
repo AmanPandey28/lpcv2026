@@ -2,7 +2,10 @@
 """
 mobileclip2_image_light_qat_v3.py
 
-Patch v3 for MobileCLIP2-S4 image-only light QAT.
+Historical MobileCLIP2-S4 image-only light QAT experiment.
+NOT the final S2 FP16 deployment. Uses hit R@10 for checkpoint selection;
+use lpcv-evaluate for the canonical fractional Recall@10. Not covered by CI.
+Requires a separately installed, compatible AIMET training environment.
 
 Fixes relative to earlier cached-target version:
 1. Preserve the INITIAL fake-quant model as a valid best checkpoint.
@@ -37,15 +40,15 @@ from torch.utils.data import DataLoader, Dataset
 from datasets import load_dataset
 from transformers import CLIPTokenizer
 
-DEFAULT_REPO_ROOT = "/home/aman/dev/lpcv/anvil/ml-mobileclip"
-DEFAULT_CHECKPOINT = "/home/aman/dev/lpcv/anvil/mobileclip2_s4.pt"
+DEFAULT_REPO_ROOT = "external/ml-mobileclip"
+DEFAULT_CHECKPOINT = "models/mobileclip2_s4.pt"
 DEFAULT_MODEL_NAME = "MobileCLIP2-S4"
 
-DEFAULT_IMG_CSV = "/home/aman/dev/lpcv/anvil/sample data/img_list.csv"
-DEFAULT_TXT_CSV = "/home/aman/dev/lpcv/anvil/sample data/txt_list.csv"
-DEFAULT_IMAGE_DIR = "/home/aman/dev/lpcv/anvil/sample data/images-20260423T155937Z-3-001/images"
+DEFAULT_IMG_CSV = "data/sample/img_list.csv"
+DEFAULT_TXT_CSV = "data/sample/txt_list.csv"
+DEFAULT_IMAGE_DIR = "data/sample/images"
 
-DEFAULT_OUTPUT_DIR = "/home/aman/dev/lpcv/anvil/lpcvc_track1_qat_image_v3_artifacts"
+DEFAULT_OUTPUT_DIR = "artifacts/qat_s4"
 
 COMPETITION_TOKENIZER_NAME = "openai/clip-vit-base-patch32"
 COMPETITION_EOS_TOKEN_ID = 49407
@@ -1006,7 +1009,7 @@ def train_one_light_qat_run(cfg: TrainConfig) -> None:
             "import qai_hub as hub",
             "compile_job = hub.submit_compile_job(",
             f"    model=r'{str(export_dir)}',",
-            "    device=hub.Device('XR2 Gen 2 (Proxy)'),",
+            "    device=hub.Device('Samsung Galaxy S22 (Family)'),",
             "    input_specs={'image': (1, 3, 224, 224)},",
             "    options='--target_runtime qnn_dlc',",
             ")",

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "opsets": {
+    "ai.onnx": 21
+  },
+  "inputs": [
+    {
+      "name": "image",
+      "dtype": "FLOAT",
+      "shape": [
+        1,
+        3,
+        224,
+        224
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output_0",
+      "dtype": "FLOAT",
+      "shape": [
+        1,
+        512
+      ]
+    }
+  ],
+  "operator_counts": {
+    "Add": 52,
+    "BatchNormalization": 4,
+    "Conv": 189,
+    "DequantizeLinear": 808,
+    "Gelu": 54,
+    "Gemm": 1,
+    "GlobalAveragePool": 1,
+    "MatMul": 16,
+    "Mul": 11,
+    "QuantizeLinear": 611,
+    "ReduceMean": 3,
+    "Relu": 3,
+    "Reshape": 17,
+    "Sigmoid": 3,
+    "Softmax": 4,
+    "Split": 4,
+    "Squeeze": 12,
+    "Transpose": 20
+  },
+  "qdq_encoding_counts": {
+    "DequantizeLinear/intermediate/int8/per_axis_0/all_zero": 190,
+    "DequantizeLinear/intermediate/int8/per_axis_1/all_zero": 8,
+    "DequantizeLinear/intermediate/uint16/per_tensor/all_zero": 12,
+    "DequantizeLinear/intermediate/uint16/per_tensor/nonzero_or_unknown": 389,
+    "DequantizeLinear/intermediate/uint8/per_axis_0/all_zero": 8,
+    "DequantizeLinear/intermediate/uint8/per_axis_0/nonzero_or_unknown": 4,
+    "DequantizeLinear/parameter/int32/per_axis_0/all_zero": 197,
+    "QuantizeLinear/intermediate/uint16/per_tensor/all_zero": 11,
+    "QuantizeLinear/intermediate/uint16/per_tensor/nonzero_or_unknown": 385,
+    "QuantizeLinear/parameter/int8/per_axis_0/all_zero": 190,
+    "QuantizeLinear/parameter/int8/per_axis_1/all_zero": 8,
+    "QuantizeLinear/parameter/uint16/per_tensor/all_zero": 1,
+    "QuantizeLinear/parameter/uint16/per_tensor/nonzero_or_unknown": 4,
+    "QuantizeLinear/parameter/uint8/per_axis_0/all_zero": 8,
+    "QuantizeLinear/parameter/uint8/per_axis_0/nonzero_or_unknown": 4
+  },
+  "note": "Initializer vs intermediate classification is structural; all-zero zero-points indicate zero-centered encodings, not proof of every quantizer's range-selection policy.",
+  "public_record_note": "Inspection of the retained historical W8A16 QDQ graph during cleanup; no new cloud run.",
+  "source_qdq_archive_sha256": "91c4e655e6bf1d2fb116e28c9c0449d6608708aea5e4b156ad00f7096e135e9e"
+}

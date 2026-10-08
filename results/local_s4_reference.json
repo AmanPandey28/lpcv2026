@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "model": {
+    "name": "MobileCLIP2-S4",
+    "pytorch_image_normalization": "clip"
+  },
+  "dataset": {
+    "name": "LPCVC 2026 Track 1 official sample set",
+    "num_images": 56,
+    "num_texts": 211,
+    "manifest_sha256": "eb309731a622aafed110c0ee1d864babcad71db5a82069c9fd9c37d1b2a2e09e",
+    "ordering": "img_list.csv row order",
+    "primary_metric": "organizer fractional Recall@K",
+    "integrity": {
+      "dangling_positive_text_ids": [
+        154
+      ],
+      "affected_images": [
+        "66910013_3cf3aef994_b.jpg"
+      ],
+      "fractional_recall_at_10_attainable_ceiling": 0.9982142857142857
+    }
+  },
+  "environment": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Mar  5 2026, 16:42:22) [GCC 14.3.0]",
+    "platform": "Linux-7.0.0-28-generic-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.8.0",
+      "torchvision": "0.23.0",
+      "open-clip-torch": "3.3.0",
+      "onnx": "1.18.0",
+      "onnxruntime": "1.22.1",
+      "transformers": "4.57.6",
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "pillow": "11.3.0"
+    }
+  },
+  "artifacts": {
+    "checkpoint": {
+      "path": "mobileclip2_s4.pt",
+      "sha256": "129cb58989867e2e648a0e3ac2642e08e7d73cccaabe55564a4b2d775215e49e"
+    }
+  },
+  "stages": {
+    "pytorch_image__pytorch_text": {
+      "metrics": {
+        "num_images": 56,
+        "num_texts": 211,
+        "embedding_dim": 768,
+        "fractional_recall_at_1": 0.2594246031746032,
+        "fractional_recall_at_1_bootstrap_95ci": [
+          0.2046626984126984,
+          0.3174627976190476
+        ],
+        "hit_recall_at_1": 0.8035714285714286,
+        "hit_recall_at_1_bootstrap_95ci": [
+          0.6964285714285714,
+          0.8928571428571429
+        ],
+        "fractional_recall_at_5": 0.7620039682539682,
+        "fractional_recall_at_5_bootstrap_95ci": [
+          0.6860106646825397,
+          0.8318005952380951
+        ],
+        "hit_recall_at_5": 0.9642857142857143,
+        "hit_recall_at_5_bootstrap_95ci": [
+          0.9107142857142857,
+          1
+        ],
+        "fractional_recall_at_10": 0.8736607142857142,
+        "fractional_recall_at_10_bootstrap_95ci": [
+          0.8041629464285713,
+          0.9333333333333333
+        ],
+        "hit_recall_at_10": 0.9821428571428571,
+        "hit_recall_at_10_bootstrap_95ci": [
+          0.9464285714285714,
+          1
+        ],
+        "mean_reciprocal_rank": 0.8730654761904761,
+        "median_first_positive_rank": 1
+      },
+      "timing": {
+        "wall_seconds": 32.80544476400246
+      }
+    }
+  },
+  "public_record_note": "Historical measurement; local absolute paths reduced to basenames. Metrics and job identifiers unchanged. Model binaries and raw embeddings are not included."
+}
